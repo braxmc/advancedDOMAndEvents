@@ -34,7 +34,7 @@ document.addEventListener('keydown', function (e) {
 // Lecture 1
 ////////////////////////////////////////////////////
 
-// Selecting Elements
+// SELECTING ELEMENTS
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -49,7 +49,7 @@ console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn'));
 
-// Creating and inserting elements
+// CREATING AND INSERTING ELEMENTS
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.textContent = 'We use cookies for improved functionality and analytics.';
@@ -62,8 +62,59 @@ header.append(message);
 // header.before(message);
 // header.after(message);
 
-// Delete Elements
+// DELETE ELEMENTS
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
   message.remove();
   message.parentElement.removeChild(message);
 });
+
+////////////////////////////////////////////////////
+// LECTURE 2 STYLES
+////////////////////////////////////////////////////
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%'
+
+console.log(message.style.color); // only works on inline styles
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// ATTRIBUTES
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// NON-STANDARD
+console.log(logo.jsCoder);
+console.log(logo.getAttribute('jsCoder'));
+logo.setAttribute('company', 'Bankist') // ie: class, href, alt, etc..
+
+
+// these get paths to logo
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+// DATA ATTRIBUTES
+console.log(logo.dataset.versionNumber);
+
+// CLASSES
+logo.classList.add('c');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+// DONT USE
+logo.className = 'jonas'; // overrides curent class
